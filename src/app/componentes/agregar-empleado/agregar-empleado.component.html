@@ -1,0 +1,31 @@
+    <div class="card">
+        <div class="card-header">
+            Agregar empleado
+        </div>
+        <div class="card-body">
+      <form  [formGroup]="formularioDeEmpleados"  (ngSubmit)="enviarDatos()">
+           <div class="mb-3">
+             <label for="" class="form-label">Nombres</label>
+             <input type="text"
+               class="form-control" formControlName="emple_nombre" name="emple_nombre" id="emple_nombre" aria-describedby="helpId" placeholder="Escriba los nombres de su empleado">
+
+           </div>
+<div class="mb-3">
+  <label for="" class="form-label">Apellidos</label>
+  <input type="text"
+    class="form-control" name="emple_apellidos" formControlName="emple_apellidos" id="emple_apellidos" aria-describedby="helpId" placeholder="Escriba los apellidos de su empleado">
+
+</div> 
+
+<div class="btn-group" role="group" aria-label="">
+    <button type="submit" class="btn btn-success">Guardar</button>
+    <button type="button" routerLink="/listar-empleado/" class="btn btn-primary">Cancelar</button>
+ </div>
+
+      </form>
+
+      
+      
+        </div>
+      
+    </div>

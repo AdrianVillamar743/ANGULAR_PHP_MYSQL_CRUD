@@ -1,0 +1,70 @@
+Comandos útiles para angular.
+1. ng new nombreproyectoacrearse
+2. ng serve 
+      url: http://localhost:4200/
+3. npm install bootstrap 
+       adicional a eso en el archivo angular.json 
+                   en el apartado de "styles" una vez 
+                   instalado bootstrap añadimos esto
+  "node_modules/bootstrap/dist/css/bootstrap.min.css"
+4. Para crear un componente usamos el siguiente comando
+   ng g c carpeta/componente
+       donde carpeta es la ruta donde se creará y componente significa el nombre del componente a crearse
+5. Debemos añadir la ruta de los nuevos componentes en el app-routing-module.ts
+Ejemplo:
+      import { AgregarEmpleadoComponent } from './componentes/agregar-empleado/agregar-empleado.component';
+import { ListarEmpleadoComponent } from './componentes/listar-empleado/listar-empleado.component';
+import { EditarEmpleadoComponent } from './componentes/editar-empleado/editar-empleado.component';
+
+const routes: Routes = [
+   
+  {path:'',pathMatch:'full',redirectTo:'agregar-empleado'},
+  {path:'agregar-empleado',component:AgregarEmpleadoComponent},
+  {path:'editar-empleado/:id',component:EditarEmpleadoComponent},
+  {path:'listar-empleado',component:ListarEmpleadoComponent}
+
+];
+
+6. En app module debemos importar  formsModule
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+
+7. Para poder trabajar con datos enviados en los componentes es decir desde un html a .ts debemos importar lo siguiente
+import{ FormGroup, FormBuilder} from '@angular/forms';
+Y en el constructor hacer referencia a lo mismo 
+formularioDeEmpleados:FormGroup;
+
+  constructor(
+    public formulario:FormBuilder
+  ) { 
+    this.formularioDeEmpleados=this.formulario.group(
+      {
+        emple_nombre:[''],
+        emple_apellidos:['']
+      }
+    )
+  }
+
+8. Para poder generar un servicio utilizamos el siguiente comando
+ ng g s servicio/nombreservicio
+9. Dentro del servicio generado especificar la importación de los siguientes componentes
+
+import {HttpClient} from '@angular/common/http'
+import { Observable } from 'rxjs';
+import { Empleado } from './Empleado';
+
+Así como su uso del HttpClient dentro del constructor y la definición de una API con la url de donde se obtienen los datos
+
+API: string='http://localhost/server/empleados/'
+  constructor(
+    private clienteHttp: HttpClient
+  ) { }
+
+

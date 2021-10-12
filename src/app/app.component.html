@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="#">Inicio <span class="visually-hidden"></span></a>
+        <a class="nav-item nav-link" routerLink="listar-empleado" routerLinkActive="router-link-active"  >Listado </a>
+        <a class="nav-item nav-link" [routerLink]="['agregar-empleado']" routerLinkActive="router-link-active" >Crear </a>
+
+    </div>
+</nav>
+<div class="container">
+  <router-outlet>
+      
+  </router-outlet>
+</div>
